@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>What Can JavaScript Do?</h2>
+<p>JavaScript can change HTML attribute values.</p>
+<p>In this case JavaScript changes the value of the src (source) attribute of an image.</p>
+
+
+<button onclick="document.getElementById('myImage').src='pic_bulb_on.gif'">Turn on the light</button> <!--On click event sets the image source to pic_bulb_on.gif-->
+<img id="myImage" src="pic_bulb_off.gif" style="width:100px">  <!--Image source is set by default-->
+<button onclick="document.getElementById('myImage').src='pic_bulb_off.gif'">Turn off the light</button>  <!--On click event sets the image source to pic_bulb_off.gif-->
+
+
+<!-- Rather than inlining JavaScript, we can use a separate function to access the DOM -->
+
+<button type="button" onclick="myFunction()">Try it</button>
+<script>
+function myFunction() {
+  document.getElementById("demo").innerHTML = "Paragraph changed.";
+}
+</script>
+
+
+</body>
+</html>
