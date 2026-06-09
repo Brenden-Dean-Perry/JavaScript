@@ -70,7 +70,30 @@ JavaScript has three ways to declare variables: `var`, `let`, and `const`.
 - `var`: Function-scoped and can be redeclared and updated. Example: `var x = 10;`
 - `let`: Block-scoped and can be updated but not redeclared. Example: `let y = 20;`
 - `const`: Block-scoped and cannot be updated or redeclared. Example: `const z = 30;`
-- `var` is generally not recommended for use in modern JavaScript due to its function-scoping and potential for unintended consequences. `let` and `const` are preferred for better readability and maintainability of code.
+- `var` is generally not recommended for use in modern JavaScript due to its function-scoping and potential for unintended consequences of hoisting. `let` and `const` are preferred for better readability and maintainability of code.
+
+#### Const
+When to use JavaScript const?
+Always declare a variable with const when you know that the value should not be changed.
+
+Use const when you declare:
+- A new Array
+- A new Object
+- A new Function
+- A new RegExp
+
+Constant Objects and Arrays
+The keyword const is a little misleading.
+
+It does not define a constant value. It defines a constant reference to a value.
+
+Because of this you can NOT:
+- Reassign a constant value
+- Reassign a constant array
+- Reassign a constant object
+But you CAN:
+- Change the elements of constant array
+- Change the properties of constant object
 
 ### Functions
 Functions are reusable blocks of code that perform a specific task. They can be defined using the `function` keyword or as arrow functions. Example:

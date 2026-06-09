@@ -84,3 +84,45 @@ let result2 = ('5' - '2'); // = 3
 // This operator performs coercion to find a "common type" before comparing.
 
 let x = (5 == "5") // x = true
+
+
+
+///////////////////////////////////////////
+// Throwing Errors
+///////////////////////////////////////////
+
+// You can throw your own errors using the throw statement. You can throw any type of value, but it's common to throw Error objects for better error handling and debugging.
+function divide(a, b) {
+    if (b === 0) {
+        throw new Error("Division by zero is not allowed."); // Throwing an error if b is zero
+    }
+    return a / b; // Otherwise, return the result of the division
+}
+
+// Example of using the divide function and catching the error
+try {
+    let result = divide(10, 0); // This will throw an error
+} catch (err) {
+    console.error(err.message); // Output: "Division by zero is not allowed."
+}
+
+// You can also create custom error classes by extending the built-in Error class. This allows you to create more specific error types for your application.
+class CustomError extends Error {
+    constructor(message) {
+        super(message); // Call the parent class constructor
+        this.name = "CustomError"; // Set the error name
+    }
+}
+
+try {
+    throw new CustomError("This is a custom error."); // Throwing a custom error
+} catch (err) {
+    console.error(err.name + ": " + err.message); // Output: "CustomError: This is a custom error."
+}   
+
+// We can also throw primitive values, but it's generally not recommended because it can make error handling more difficult and less consistent.
+try {
+    throw "This is a string error."; // Throwing a string as an error
+} catch (err) {
+    console.error(err); // Output: "This is a string error."
+}
