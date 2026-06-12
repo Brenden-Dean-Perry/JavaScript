@@ -1,4 +1,4 @@
-// Objects
+// Objects & Classes
 // Objects in JavaScript are collections of key-value pairs. They can hold various data types, including other objects, arrays, functions, and primitive values.
 
 /*

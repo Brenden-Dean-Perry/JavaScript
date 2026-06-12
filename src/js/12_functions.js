@@ -152,3 +152,205 @@ When Not to Use Arrow Functions:
 - When you need your own this
 - When using function declarations
 */
+
+///////////////////////////
+// Function Definition (Ways to define funtions)
+///////////////////////////
+
+/*
+Function Definitions vs Function Declarations
+Function definition is a general term for defining a function.
+Function declaration is one specific way to define a function.
+Examples of function definitions include:
+
+Function declarations
+Function expressions
+Arrow functions
+*/
+
+// Function Declaration
+function myFunction(x, y) {
+    return x * y;
+}
+
+// Function Expression (Named)
+const myFunction = function name(x, y) {
+    return x * y;
+};
+
+// Function Expression (Anonymous)
+const myFunction = function (x, y) {
+    return x * y;
+};
+
+// Arrow Function
+const myFunction = (x, y) => x * y;
+
+// Function Constructor
+const myFunction = new Function("x", "y", "return x * y");
+
+// Object Method
+const obj = {
+    myFunction(x, y) {
+        return x * y;
+    },
+};
+
+/////////////////////////
+// Callbacks
+/////////////////////////
+/*
+JavaScript Callbacks
+"I will call back later!"
+A JavaScript callback is a function passed as an argument to another function, which is then executed(or "called back") at a later point in time to complete a specific task.
+This mechanism is fundamental to JavaScript's event-driven and asynchronous programming model.
+
+What is a Callback Function ?
+    A callback function is a function passed as an argument into another function.
+
+A callback function is intended to be executed later.
+
+Later is typically when a specific event occurs or an asynchronous operation completes.
+The name "callback" stems from the idea that the outer function will "call you back" later when it has finished its task
+*/
+
+//////////////////////////////
+/// Asynchronous Callbacks
+//////////////////////////////
+
+/*
+Asynchronous callbacks are executed at a later time, allowing the main program to continue running without waiting.
+This is essential for preventing the application from freezing during long - running tasks like network requests.
+
+Synchronous Callbacks
+Synchronous Callbacks are executed immediately within the outer function, blocking further operations until completion.
+
+Array methods like map(), filter(), and forEach() use synchronous callbacks.
+
+Event Handling
+Callbacks are often used in JavaScript, especially in event handling.
+
+User interactions, such as button clicks or key presses, can be handled by providing a callback function to an event listener:
+
+Example:
+*/
+
+document.getElementById("myButton").addEventListener("click", displayDate);
+
+/*
+In the example above, displayDate is a callback function passed as an argument to the addEventListener() method.
+displayDate will be called when a user clicks the button with id = "myButton".
+
+When you pass a function as an argument, remember not to use parenthesis.
+    Right: displayDate
+    Wrong: displayDate()
+    */
+
+///////////////////////////
+// Self-invoking Function
+//////////////////////////
+/*
+Self - Invoking Functions
+Immediately Invoked Function Expressions
+An IIFE is short for an Immediately Invoked Function Expression.
+An IIFE is a function that invokes itself when defined.
+What Is an IIFE ?
+Normally, a function runs only when it is called.
+
+An IIFE runs automatically when the JavaScript engine reads it(compiles it). Example:
+*/
+    (function () {
+        // Code to run immediately
+    })();
+
+/*
+An IIFE function is defined and executed at the same time.
+When is IIFE Used ?
+    - To create a private scope
+    - To run setup code once
+    - In older JavaScript code
+    - Avoid Polluting the Global Scope
+    Everything inside an IIFE is private to that function.
+*/
+// Variables inside an IIFE cannot be accessed from outside. Examples:
+
+    (function () {
+        let x = 10;
+    })();
+
+// x is not accessible here
+
+(function () {
+    let hidden = 42;
+})();
+
+let result = hidden; // ⛔ Error: hidden is not defined
+
+// Simple IIFE Example:
+    (function () {
+        let text = "Hello! I called myself.";
+})();
+
+// The function above is also called an anonymous self - invoking function (function without name).
+
+
+//////////////////////////////
+// How an IIFE Works
+//////////////////////////////
+// Function expressions can be made self - invoking.
+// A self - invoking function expression is invoked(started) automatically, without being called.
+// Function
+function () {
+    // Code to run
+};
+
+// Parentheses around the function tell JavaScript to treat the function as an expression.
+// Expression:
+    (function () {
+        // Code to run
+    });
+
+// The function is wrapped in parentheses to turn it into an expression.
+// Function expressions will execute automatically if the expression is followed by().
+// Final Syntax
+
+    (function () {
+        // Code to run
+    })();
+
+/*
+The final() executes the function immediately.
+- You can only self - invoke a function expression.
+- You can not self - invoke a function declaration.
+*/
+
+
+////////////////////////////////
+// Modern alterntive to Closure
+////////////////////////////////
+/*
+Modern Alternative: Private Class Fields
+Since ECMAScript 2022, JavaScript supports real private class fields using the # syntax.
+Private fields are enforced by the language and cannot be accessed outside the class.
+All modern browsers support private class fields. Example:
+*/
+class Counter {
+    #count = 0;
+
+    increment() {
+        this.#count++;
+        return this.#count;
+    }
+}
+
+const myCounter = new Counter();
+myCounter.increment();
+
+/*
+Private class fields are usually preferred when working with classes.
+- They provide true privacy.
+- They are simpler than closure - based patterns inside classes.
+- They are part of the official ECMAScript standard.
+- Closures are still important and useful outside of classes.
+Closures are also widely used in older codebases and functional programming patterns.
+*/
